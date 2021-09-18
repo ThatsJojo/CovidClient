@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="347.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Frontend.FXMLDocumentController">
+    <children>
+      <TabPane fx:id="TabPaneUsers" nodeOrientation="LEFT_TO_RIGHT" prefHeight="430.0" prefWidth="543.0">
+        <tabs>
+            <Tab onClosed="#stopConnection" onSelectionChanged="#userTabChanged" text="V^Ja3?UGc*qp&lt;D&amp;Nky=9!n4Hr]MV,)/n&amp;s$hxd@SMhJ}6X9qPjUd?Tb/mS$B/7kuD,K,!mN3C,j{*F~A8U*nXmD:*XWE%~nEPfqdYK#k*pT$(!b&lt;&amp;nzfS$rjz-tKP?^.">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="22.0" layoutY="148.0" text="Temperatura">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="24.0" layoutY="312.0" text="Pressão Arterial Sistólica">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="291.0" layoutY="227.0" text="Saturação de Oxigênio">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="22.0" layoutY="227.0" text="Frequência Cardíaca">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="291.0" layoutY="148.0" text="Respiração">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUserName" layoutX="80.0" layoutY="21.0" text="Sarah B. Hoover">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="27.0" layoutY="21.0" text="Nome:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="27.0" layoutY="41.0" text="Idade:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="27.0" layoutY="61.0" text="Sexo:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUserAge" layoutX="80.0" layoutY="41.0" text="22">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUserSex" layoutX="80.0" layoutY="61.0" text="Feminino">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="291.0" layoutY="312.0" text="Pressão Arterial Diastólica">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblConectado" layoutX="23.0" layoutY="89.0" text="Conectado">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnStartSend" layoutX="431.0" layoutY="94.0" mnemonicParsing="false" onAction="#handleBtnStartSend" text="Enviar Alerta" textFill="RED" />
+                        <Label layoutX="228.0" layoutY="21.0" text="Key:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUserKey" layoutX="277.0" layoutY="21.0" text="User 1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userTemperature" layoutX="24.0" layoutY="165.0" text="37  ºC">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userHeartRate" layoutX="24.0" layoutY="242.0" text="60 bpm">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userBreathingRate" layoutX="292.0" layoutY="165.0" text="12 ipm">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userOxygenSaturation" layoutX="292.0" layoutY="248.0" text="96 %">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userSystolicBloodPressure" layoutX="24.0" layoutY="326.0" text="12 mmHg">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userDiastolicBloodPressure" layoutX="292.0" layoutY="333.0" text="8 mmHg">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab id="more" fx:id="tabLogin" closable="false" text="Nova Conexão">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="458.0" prefWidth="542.0">
+                     <children>
+                          <Button fx:id="btnLogin" layoutX="184.0" layoutY="320.0" onAction="#handleBtnStartConnection" prefHeight="44.0" prefWidth="175.0" text="Login">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Button>
+                        <TextField fx:id="userKey" layoutX="22.0" layoutY="68.0" prefHeight="30.0" prefWidth="495.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <Label layoutX="21.0" layoutY="41.0" text="Médico Login">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label layoutX="22.0" layoutY="115.0" text="IP">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <TextField fx:id="userIP" layoutX="23.0" layoutY="141.0" prefHeight="30.0" prefWidth="309.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <Label layoutX="351.0" layoutY="115.0" text="Porta">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="userPort" layoutX="351.0" layoutY="141.0" prefHeight="30.0" prefWidth="167.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="8.0" layoutY="379.0" text="Endereço de alerta: " />
+                        <Label fx:id="lblAllerts" layoutX="113.0" layoutY="379.0" text="Não configurado" />
+                        <ComboBox fx:id="boxPacient" layoutX="26.0" layoutY="245.0" prefHeight="25.0" prefWidth="491.0" promptText="Pacientes" visible="false" />
+                        <Label fx:id="lblConnected" layoutX="27.0" layoutY="225.0" text="Conexão Estabelecida" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnLookAtHim" layoutX="354.0" layoutY="279.0" mnemonicParsing="false" onAction="#btnChangeUser" text="Acompanhar paciente atual" visible="false" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+         <effect>
+            <InnerShadow height="9.14" radius="4.07" width="9.14" />
+         </effect>
+      </TabPane>
+      <DialogPane fx:id="AllertUser" contentText="João maria Porta IP Sexo" disable="true" headerText="Usuário Já conectado" layoutX="91.0" layoutY="140.0" prefHeight="128.0" prefWidth="366.0" visible="false">
+         <buttonTypes>
+            <ButtonType fx:constant="CLOSE" />
+         </buttonTypes>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <padding>
+            <Insets left="10.0" top="10.0" />
+         </padding>
+      </DialogPane>
+      <Pane fx:id="AllertConfigPane" layoutX="101.0" layoutY="80.0" prefHeight="262.0" prefWidth="344.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <Label layoutX="19.0" layoutY="140.0" text="Mensagem">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="allertMessage" layoutX="19.0" layoutY="166.0" prefHeight="30.0" prefWidth="309.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Button fx:id="btnAllertSave" layoutX="149.0" layoutY="223.0" mnemonicParsing="false" onAction="#OnallertSend" text="Enviar" />
+            <Label fx:id="lblAllertError" layoutX="152.0" layoutY="64.0" text="Allert Error" textFill="RED" visible="false" />
+            <Label layoutX="25.0" layoutY="64.0" text="Enviar Alerta para o Usuário">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>

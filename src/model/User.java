@@ -206,7 +206,6 @@ public class User {
                         LinkedList<String> data = TCPClient.getInstance().getUser(key);
                         this.setName(sex);
                         Iterator it = data.iterator();
-                        System.out.println("Atualizando user: " + it.next());
                         u.setName((String) it.next());
                         u.setAge((String) it.next());
                         u.setSex((String) it.next());

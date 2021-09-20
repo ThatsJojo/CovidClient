@@ -19,6 +19,13 @@ public class TCPClient extends Thread {
     private boolean connected;
     private static TCPClient tcpClient;
 
+    /**
+     * Recebe o Client caso saiba as informações de Conexão.
+     * @param ip Endereço para conexão com a API.
+     * @param port Porta para conexão com a API.
+     * @param myController Controllador de Usuários.
+     * @return Instância única para o Client.
+     */
     public static TCPClient getIstance(String ip, int port, UserController myController) {
         if (tcpClient == null) {
             tcpClient = new TCPClient(ip, port, myController);
@@ -26,10 +33,20 @@ public class TCPClient extends Thread {
         return tcpClient;
     }
     
+    /**
+     * Recebe o Client sem saber as informações de conexão.
+     * @return 
+     */
     public static TCPClient getInstance(){
         return tcpClient;
     }
 
+    /**
+     * Cliente que se conecta com a APIRest.
+     * @param ip Endereço IP para a conexão com a API.
+     * @param port Porta para a conexão com a API.
+     * @param myController Controllador de Usuários.
+     */
     private TCPClient(String ip, int port, UserController myController) {
         this.ip = ip;
         this.port = port;
@@ -41,14 +58,32 @@ public class TCPClient extends Thread {
         return sendRequest("GET /user/" + user + " HTTP/1.1\r\n\r\n");
     }
 
+    /**
+     * Requisita à APIRest as informações gerais dos usuários conectados.
+     * @return Lista com as linhas referentes à resposta da APIRest.
+     * @throws IOException Caso a Request não seja realizada com sucesso.
+     */
     public LinkedList<String> getUsers() throws IOException {
         return sendRequest("GET / HTTP/1.1\r\n\r\n");
     }
 
+    /**
+     * Envia uma mensagem via APIRest.
+     * @param userKey Chave do usuário.
+     * @param message Mensagem a ser enviada.
+     * @return Resposta da APIRest.
+     * @throws IOException Caso a Request não seja realizada com sucesso.
+     */
     public LinkedList<String> sendAllert(String userKey, String message) throws IOException {
         return sendRequest("PUT /sendAllert/" + userKey + " HTTP/1.1\r\n" + "message:" + message + "\r\n\r\n");
     }
 
+    /**
+     * Envia uma request à APIRest
+     * @param request
+     * @return
+     * @throws IOException 
+     */
     private LinkedList<String> sendRequest(String request) throws IOException {
         Socket socket = new Socket(ip, port);
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -62,11 +97,13 @@ public class TCPClient extends Thread {
             linha = reader.readLine();
             linhas.add(linha);
         }
-        //System.out.println(linhas);
         return linhas;
 
     }
 
+    /**
+     * Enquanto @connected == true, atualiza as informações dos usuários logados.
+     */
     @Override
     public void run() {
         connected = true;
@@ -85,6 +122,9 @@ public class TCPClient extends Thread {
         }
     }
 
+    /**
+     * Finaliza a tarefa em execução.
+     */
     public void stopTask() {
         connected = false;
     }

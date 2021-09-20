@@ -27,6 +27,14 @@ public class User {
     private String date;
     private String time;
 
+    /**
+     * Cria um usuário.
+     * @param key Chave do usuário.
+     * @param name Nome do usuário.
+     * @param age Idade do usuário.
+     * @param sex Sexo do usuário.
+     * @param listenner Tela em que as informações do usuário serão exibidas.
+     */
     public User(String key, String name, String age, String sex, FXMLDocumentController listenner) {
         hasUnseenAllert = false;
         this.key = key;
@@ -44,6 +52,10 @@ public class User {
         time = "null";
     }
 
+    /**
+     * Atualiza o nome do usuário na classe e na tela.
+     * @param name 
+     */
     public void setName(String name) {
         listenner.userNameOnChange(name);
         this.name = name;
@@ -196,6 +208,10 @@ public class User {
         return true;
     }
 
+    /**
+     * Organiza as informações do usuário.
+     * @return Array de bytes para as informações do usuário.
+     */
     byte[] getData() {
         String data = "key: " + key + "\n"
                 + "name: " + name + "\n"
@@ -210,10 +226,17 @@ public class User {
         return data.getBytes();
     }
 
+    /**
+     * Avisa à tela que um pacote foi recebido para o usuário atual.
+     */
     public void sentAllert() {
         this.listenner.pisca(this);
     }
 
+    /**
+     * Enquanto solicitado para atualização, requisita da API as informações atuais do usuário.
+     * E envia para a tela.
+     */
     public void att() {
         atting = true;
         User u = this;
@@ -251,6 +274,9 @@ public class User {
         att.start();
     }
 
+    /**
+     * Para de atualizar as informações do usuário.
+     */
     public void stopAtt() {
         atting = false;
         att.interrupt();

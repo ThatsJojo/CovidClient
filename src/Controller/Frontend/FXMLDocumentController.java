@@ -134,12 +134,20 @@ public class FXMLDocumentController implements Initializable {
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
     }
 
+    /**
+     * Botão para enviar mensagem.
+     * @param event Evento capturado.
+     */
     @FXML
     private void handleBtnStartSend(ActionEvent event) {
         TabPaneUsers.setDisable(true);
         AllertConfigPane.setVisible(true);
     }
 
+    /**
+     * Botão de iniciar conexão.
+     * @param event Evento capturado.
+     */
     @FXML
     private void handleBtnStartConnection(ActionEvent event) {
         int port = Integer.parseInt(userPort.getText());
@@ -155,15 +163,20 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * Evendo de mudança de Tab de usuário.
+     * @param event Evento capturado.
+     */
     @FXML
     private void userTabChanged(Event event) {
         Tab t = (Tab) event.getTarget();
         currentTab = t;
+        //HashCode para Tab com os elementos da tela de Usuário.
         if (t.getText().equals("V^Ja3?UGc*qp<D&Nky=9!n4Hr]MV,)/n&s$hxd@SMhJ}6X9qPjUd?Tb/mS$B/7kuD,K,!mN3C,j{*F~A8U*nXmD:*XWE%~nEPfqdYK#k*pT$(!b<&nzfS$rjz-tKP?^.")) {
             return;
         }
         String name = t.getText();
-        if (t.isSelected()) {
+        if (t.isSelected()) {//Caso esteja abrindo a Tab. Atualiza as informações do usuário selecionado.
             t.setContent(content);
             User user = tabsXusers.get(t);
             currentUser = user;
@@ -178,7 +191,7 @@ public class FXMLDocumentController implements Initializable {
             userHeartRate.setText(user.getHeartRate());
             userOxygenSaturation.setText(user.getOxygenSaturation());
             userTemperature.setText(user.getTemperature());
-        } else {
+        } else {//Caso esteja fechando a Tab.
             t.setContent(null);
             currentTab = tabLogin;
             currentUser.stopAtt();
@@ -193,12 +206,20 @@ public class FXMLDocumentController implements Initializable {
         FXMLDocumentController.myStage = myStage;
     }
 
+    /**
+     * Atualiza a Temperatura
+     * @param txt temperatura.
+     */
     public void userTemperatureOnChange(String txt) {
         Platform.runLater(() -> {
             userTemperature.setText(txt);
         });
     }
 
+    /**
+     * Atualiza a taxa de respiração.
+     * @param txt taxa de respiração.
+     */
     public void userBreathingRateOnChange(String txt) {
         Platform.runLater(() -> {
             userBreathingRate.setText(txt);
@@ -259,6 +280,10 @@ public class FXMLDocumentController implements Initializable {
         });
     }
     
+    /**
+     * Pisca o nome conectado caso um pacote tenha sido recebido para o usuário em questão.
+     * @param user Usuário para o qual o pacote foi recebido.
+     */
     public void pisca(User user) {
         if (!currentUser.equals(user)) {
             return;
@@ -281,6 +306,10 @@ public class FXMLDocumentController implements Initializable {
         this.users = users;
     }
 
+    /**
+     * Evento gerado quando abre-se a tela de um usuário.
+     * @param event Evento capturado.
+     */
     @FXML
     private void btnChangeUser(ActionEvent event) {
         String u = (String) boxPacient.getValue();
@@ -299,11 +328,19 @@ public class FXMLDocumentController implements Initializable {
         tabs.add(tabs.size() - 1, tab);
     }
 
+    /**
+     * Evento gerado quando é fechada a Tab de um usuário.
+     * @param event Evento capturado.
+     */
     @FXML
     private void stopConnection(Event event) {
         UserController.stopConnection(currentUser);
     }
 
+    /**
+     * Evento gerando pelo envio de uma mensagem.
+     * @param event Evento capturado.
+     */
     @FXML
     private void OnallertSend(ActionEvent event) {
         String messsage = allertMessage.getText();
@@ -315,6 +352,10 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * Atualiza os usuários exibidos na tela de conexão.
+     * @param USERS Conjunto de usuários recebidos via TCP.
+     */
     public void attUSERS(HashMap<String, User> USERS) {
         ArrayList<String> tempArray = new ArrayList();
 

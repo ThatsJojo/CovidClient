@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller.Frontend;
 
 import Controller.Backend.UserController;
@@ -198,34 +193,40 @@ public class FXMLDocumentController implements Initializable {
         FXMLDocumentController.myStage = myStage;
     }
 
-    private void userTemperatureOnChange(String txt) {
-        userTemperature.setText(txt);
-        pisca(currentUser);
+    public void userTemperatureOnChange(String txt) {
+        Platform.runLater(() -> {
+            userTemperature.setText(txt);
+        });
     }
 
-    private void userBreathingRateOnChange(String txt) {
-        userBreathingRate.setText(txt);
-        pisca(currentUser);
+    public void userBreathingRateOnChange(String txt) {
+        Platform.runLater(() -> {
+            userBreathingRate.setText(txt);
+        });
     }
 
-    private void userHeartRateOnChange(String txt) {
-        userHeartRate.setText(txt);
-        pisca(currentUser);
+    public void userHeartRateOnChange(String txt) {
+        Platform.runLater(() -> {
+            userHeartRate.setText(txt);
+        });
     }
 
-    private void userOxygenSaturationOnChange(String txt) {
-        userOxygenSaturation.setText(txt);
-        pisca(currentUser);
+    public void userOxygenSaturationOnChange(String txt) {
+        Platform.runLater(() -> {
+            userOxygenSaturation.setText(txt);
+        });
     }
 
-    private void userSystolicBloodPressureOnChange(String txt) {
-        userSystolicBloodPressure.setText(txt);
-        pisca(currentUser);
+    public void userSystolicBloodPressureOnChange(String txt) {
+        Platform.runLater(() -> {
+            userSystolicBloodPressure.setText(txt);
+        });
     }
 
-    private void userDiastolicBloodPressureOnChange(String txt) {
-        userDiastolicBloodPressure.setText(txt);
-        pisca(currentUser);
+    public void userDiastolicBloodPressureOnChange(String txt) {
+        Platform.runLater(() -> {
+            userDiastolicBloodPressure.setText(txt);
+        });
     }
 
     public void pisca(User user) {

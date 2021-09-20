@@ -38,6 +38,8 @@ public class UserController {
     }
 
     public static void killAllUsersKonnections() {
+        if(tcpClient == null)
+            return;
         tcpClient.stopTask();
         tcpClient.interrupt();
     }

@@ -17,12 +17,12 @@ public class UserController {
     private static TCPClient tcpClient;
 
     public static void stopConnection(User currentUser) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        currentUser.stopAtt();
     }
-    private FXMLDocumentController tela;
+    private final FXMLDocumentController tela;
 
     public UserController(FXMLDocumentController tela, HashMap<String, User> USERS) {
-        this.USERS = USERS;
+        UserController.USERS = USERS;
         this.tela = tela;
     }
 
@@ -68,19 +68,12 @@ public class UserController {
         if (usersArray.size() < 2) {
             return;
         }
-        Iterator it = usersArray.iterator();
-        while (it.hasNext()) {
-            String s = (String) it.next();
-            if (s != null) {
-                String[] data = s.split(":");
-                if (data.length == 2) {
-                    String key = data[0];
-                    data = data[1].split(",");
-                    User u = new User(key, data[0], data[1].replace('&', ' '), data[2], tela);
-                    USERS.put(key, u);
-                }
-            }
-        }
+        usersArray.stream().filter((s) -> (s != null)).map((s) -> s.split(":")).filter((data) -> (data.length == 2)).forEachOrdered((data) -> {
+            String key = data[0];
+            data = data[1].split(",");
+            User u = new User(key, data[0].replace('&', ' '), data[1], data[2], tela);
+            USERS.put(key, u);
+        });
         tela.attUSERS(USERS);
     }
 }

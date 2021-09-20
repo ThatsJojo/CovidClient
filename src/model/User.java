@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class User {
 
@@ -26,6 +24,8 @@ public class User {
     private boolean hasUnseenAllert;
     private Thread att;
     private boolean atting;
+    private String date;
+    private String time;
 
     public User(String key, String name, String age, String sex, FXMLDocumentController listenner) {
         hasUnseenAllert = false;
@@ -35,11 +35,41 @@ public class User {
         this.sex = sex;
         this.listenner = listenner;
         temperature = "36 ºC";
-        oxygenSaturation = "96 %";
+        oxygenSaturation = "96";
         breathingRate = "12 ipm";
         heartRate = "60 bpm";
         systolicBloodPressure = "12 mmHg";
         diastolicBloodPressure = "8 mmHg";
+        date = "null";
+        time = "null";
+    }
+
+    public void setName(String name) {
+        listenner.userNameOnChange(name);
+        this.name = name;
+    }
+
+    public void setAge(String age) {
+        listenner.userAgeOnChange(age);
+        this.age = age;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+        listenner.userDateOnChange(date);
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+        listenner.userTimeOnChange(time);
     }
 
     public String getSex() {
@@ -48,6 +78,7 @@ public class User {
 
     public void setSex(String sex) {
         this.sex = sex;
+        listenner.userSexOnChange(sex);
     }
 
     public String getName() {
@@ -131,14 +162,6 @@ public class User {
         this.allertException = allertException;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
     public String getAllertString() {
         return allertString;
     }
@@ -204,8 +227,8 @@ public class User {
                             throw new InterruptedException();
                         }
                         LinkedList<String> data = TCPClient.getInstance().getUser(key);
-                        this.setName(sex);
                         Iterator it = data.iterator();
+                        it.next();
                         u.setName((String) it.next());
                         u.setAge((String) it.next());
                         u.setSex((String) it.next());
@@ -215,14 +238,11 @@ public class User {
                         u.setOxygenSaturation((String) it.next());
                         u.setSystolicBloodPressure((String) it.next());
                         u.setDiastolicBloodPressure((String) it.next());
+                        u.setDate((String) it.next());
+                        u.setTime((String) it.next());
                         u.listenner.pisca(u);
-                        while (it.hasNext()) {
-                            System.out.println(it.next());
-                        }
-                    } catch (IOException ex) {
-                        Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException | InterruptedException ex) {
+                        System.out.println("Parando de ouvir " + u.key);
                     }
 
                 }

@@ -46,14 +46,11 @@ public class TCPClient extends Thread {
     }
 
     public LinkedList<String> sendAllert(String userKey, String message) throws IOException {
-        return sendRequest("GET /sendAllert/" + userKey + " HTTP/1.1\r\n" + "message:" + message + "\r\n\r\n");
+        return sendRequest("PUT /sendAllert/" + userKey + " HTTP/1.1\r\n" + "message:" + message + "\r\n\r\n");
     }
 
     private LinkedList<String> sendRequest(String request) throws IOException {
         Socket socket = new Socket(ip, port);
-        if (socket.isConnected()) {
-            System.out.println("Cliente conectado a " + socket.getInetAddress());
-        }
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         writer.write(request);

@@ -114,7 +114,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Label fx:id="userOxygenSaturation" layoutX="292.0" layoutY="248.0" text="96 %">
+                        <Label fx:id="userOxygenSaturation" layoutX="292.0" layoutY="248.0" text="96">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -127,6 +127,31 @@
                         <Label fx:id="userDiastolicBloodPressure" layoutX="292.0" layoutY="333.0" text="8 mmHg">
                            <font>
                               <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="348.0" layoutY="248.0" text="\%">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="228.0" layoutY="41.0" text="Atualizado em:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUserDate" layoutX="327.0" layoutY="41.0" text="00/00/0000">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUserTime" layoutX="423.0" layoutY="41.0" text="00:00:00">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="404.0" layoutY="41.0" text="às">
+                           <font>
+                              <Font size="14.0" />
                            </font>
                         </Label>
                      </children>

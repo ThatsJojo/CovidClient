@@ -59,10 +59,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button btnStartSend;
     @FXML
-    private Label lblUserIP;
-    @FXML
-    private Label lblUserPort;
-    @FXML
     private Label lblUserKey;
     @FXML
     private Label userHeartRate;
@@ -109,6 +105,10 @@ public class FXMLDocumentController implements Initializable {
     private HashMap<String, User> users;
     private HashMap<String, User> auxMap = new HashMap();
     private UserController userController;
+    @FXML
+    private Label lblUserDate;
+    @FXML
+    private Label lblUserTime;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -229,6 +229,36 @@ public class FXMLDocumentController implements Initializable {
         });
     }
 
+    public void userNameOnChange(String name) {
+        Platform.runLater(() -> {
+            lblUserName.setText(name);
+        });
+    }
+
+    public void userAgeOnChange(String age) {
+        Platform.runLater(() -> {
+            lblUserAge.setText(age);
+        });
+    }
+    
+    public void userSexOnChange(String sex) {
+        Platform.runLater(() -> {
+            lblUserSex.setText(sex);
+        });
+    }
+
+    public void userDateOnChange(String date) {
+        Platform.runLater(() -> {
+            lblUserDate.setText(date);
+        });
+    }
+    
+    public void userTimeOnChange(String time) {
+        Platform.runLater(() -> {
+            lblUserTime.setText(time);
+        });
+    }
+    
     public void pisca(User user) {
         if (!currentUser.equals(user)) {
             return;
@@ -280,9 +310,8 @@ public class FXMLDocumentController implements Initializable {
         if (!messsage.equals("")) {
             TabPaneUsers.setDisable(false);
             AllertConfigPane.setVisible(false);
-            String message = "";
+            String message = allertMessage.getText();
             UserController.sendAllert(currentUser.getKey(), message);
-            System.out.println("SAIU");
         }
     }
 
@@ -290,7 +319,7 @@ public class FXMLDocumentController implements Initializable {
         ArrayList<String> tempArray = new ArrayList();
 
         USERS.forEach((t, u) -> {
-            String st = "" + u.getKey() + " - " + u.getName() + " " + u.getAge() + " " + u.getSex();
+            String st = "" + u.getKey() + " - " + u.getName() + " - " + u.getAge() + " - " + u.getSex();
             auxMap.put(st, u);
             tempArray.add(st);
         });
